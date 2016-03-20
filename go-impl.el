@@ -60,7 +60,10 @@ See https://github.com/josharian/impl to obtain the tool.
   (interactive "MReceiver: \nMInterface: ")
   (setq iface (or (cdr (assoc iface go-impl-aliases-alist))
                   iface))
-  (shell-command (format "impl '%s' %s" recv iface) t)
+  (shell-command (format "impl %s %s"
+                         (shell-quote-argument recv)
+                         (shell-quote-argument iface))
+                 t)
   (when go-impl-enter-function
     (forward-line)
     (back-to-indentation)))
