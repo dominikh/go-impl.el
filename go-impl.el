@@ -32,6 +32,11 @@
   "impl integration for go-mode."
   :group 'go)
 
+(defcustom go-impl-command "impl"
+  "The 'impl' command."
+  :type 'string
+  :group 'go-impl)
+
 (defcustom go-impl-aliases-alist nil
   "List of aliases for interface names"
   :type '(alist :key-tpe (string) :value-type (string))
@@ -60,7 +65,8 @@ See https://github.com/josharian/impl to obtain the tool.
   (interactive "MReceiver: \nMInterface: ")
   (setq iface (or (cdr (assoc iface go-impl-aliases-alist))
                   iface))
-  (shell-command (format "impl %s %s"
+  (shell-command (format "%s %s %s"
+                         go-impl-command
                          (shell-quote-argument recv)
                          (shell-quote-argument iface))
                  t)
