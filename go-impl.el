@@ -39,7 +39,7 @@
 
 (defcustom go-impl-aliases-alist nil
   "List of aliases for interface names"
-  :type '(alist :key-tpe (string) :value-type (string))
+  :type '(alist :key-type (string) :value-type (string))
   :group 'go-impl)
 
 (defcustom go-impl-enter-function nil
